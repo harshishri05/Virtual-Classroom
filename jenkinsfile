@@ -1,1 +1,33 @@
+pipeline {
+    agent any
 
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from Git repository
+                git 'https://github.com/yourusername/virtual-classroom.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build your application (e.g., compile code, run tests)
+                sh 'npm install' // or any other build command
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests (if applicable)
+                sh 'npm test' // or any other test command
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy your application (e.g., to a web server)
+                sh 'npm run deploy' // or any other deployment command
+            }
+        }
+    }
+}
